@@ -1,14 +1,8 @@
 [
     {
-        "name": "Command Category 1",
-        "dir": "cat1",
-        "description": "Desc of this category",
-        "emoji": "😍"
-    },
-    {
-        "name": "Command Category 2",
-        "dir": "cat2",
-        "description": "Another description",
-        "emoji": "🤓"
+        "name": "Images animées",
+        "dir": "gifs",
+        "description": "Donnez votre humeur avec des images animées",
+        "emoji": "🖼️"
     }
 ]
