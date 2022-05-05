@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Command Category 1",
+        "dir": "cat1",
+        "description": "Desc of this category",
+        "emoji": "😍"
+    },
+    {
+        "name": "Command Category 2",
+        "dir": "cat2",
+        "description": "Another description",
+        "emoji": "🤓"
+    }
+]
