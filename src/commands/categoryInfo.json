@@ -4,5 +4,11 @@
         "dir": "gifs",
         "description": "Donnez votre humeur avec des images animées",
         "emoji": "🖼️"
+    },
+    {
+        "name": "Utilities",
+        "dir": "utils",
+        "description": "Commandes utilitaires",
+        "emoji": "🔧"
     }
 ]
