@@ -37,7 +37,7 @@ exports.execute = async (interaction, commands) => {
         });
 
         await interaction.reply({
-            content: "<:Snap:661557175130521610>"
+            content: "<:Snap:834854661667815514>"
         });
 
         const attachment = new MessageAttachment('.cache/' + interaction.channel.name + '.txt');
