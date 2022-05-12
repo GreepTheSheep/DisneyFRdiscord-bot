@@ -37,7 +37,7 @@ exports.args = [
     {
         name: 'viewChannel',
         description: 'Autoriser l\'utilisateur à voir le ticket',
-        type: 'boolean',
+        type: 'bool',
         required: false
     }
 ];
