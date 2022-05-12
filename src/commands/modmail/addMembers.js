@@ -1,13 +1,11 @@
 const Command = require('../../structures/Command'),
-    {MessageEmbed, CommandInteraction, SelectMenuInteraction, Message, MessageActionRow, MessageButton, MessageSelectMenu, MessageAttachment} = require('discord.js'),
-    { unlinkSync } = require('fs'),
-    wait = require('util').promisify(setTimeout);
+    {MessageEmbed, CommandInteraction, SelectMenuInteraction, Message, MessageActionRow, MessageButton, MessageSelectMenu, MessageAttachment} = require('discord.js');
 
 /**
  * Set the command here, it's what we'll type in the message
  * @type {string}
  */
-exports.name = 'mmaccess';
+exports.name = 'mmadd';
 
 
 /**
@@ -33,12 +31,6 @@ exports.args = [
         description: 'Ajouter un groupe d\'utilisateurs par leur rôle',
         type: 'role',
         required: false
-    },
-    {
-        name: 'viewChannel',
-        description: 'Autoriser l\'utilisateur à voir le ticket',
-        type: 'bool',
-        required: false
     }
 ];
 
@@ -56,8 +48,7 @@ exports.execute = async (interaction, commands) => {
         });
 
         let user = interaction.options.getUser('user'),
-            role = interaction.options.getRole('role'),
-            viewChannel = interaction.options.getBoolean('viewChannel') | false;
+            role = interaction.options.getRole('role');
 
         if (!user && !role) return interaction.reply({
             ephemeral:true,
@@ -70,14 +61,14 @@ exports.execute = async (interaction, commands) => {
 
         if (user) {
             await interaction.channel.permissionOverwrites.edit(user, {
-                VIEW_CHANNEL: viewChannel,
+                VIEW_CHANNEL: true,
             });
 
             users.push(user);
         }
         if (role) {
             await interaction.channel.permissionOverwrites.edit(role, {
-                VIEW_CHANNEL: viewChannel,
+                VIEW_CHANNEL: true,
             });
 
             role.members.forEach(user => {
@@ -86,7 +77,7 @@ exports.execute = async (interaction, commands) => {
         }
 
         interaction.editReply({
-            content: `${users.length} membres ${viewChannel?"ajoutés":"partis"}: ${users.map(user => `<@${user.id}>`).join(', ')}`,
+            content: `${users.length} membres ajoutés: ${users.map(user => `<@${user.id}>`).join(', ')}`,
         });
 
     } else interaction.reply({
