@@ -3,7 +3,8 @@ const Command = require('./structures/Command'),
     { Client, Intents } = require('discord.js'),
     client = new Client({
         intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
-    });
+    }),
+    { readFile, writeFileSync } = require('fs');
 
 client.login().catch(err=>{
     console.error("❌ Connexion to Discord failed: " + err);
@@ -80,6 +81,15 @@ client.on('guildCreate', guild=>{
     require('./registerCommandsScript')(guild.id, client.user.id, commands);
 });
 
-client.on('guildDelete', guild=>{
-    console.log('📌 Guild left: ' + guild.name);
+client.on('messageCreate', message=>{
+    if (message.channel.parentId == '757559028661354536') { // modmail
+        readFile('.cache/'+ message.channel.name + '.txt', (err, data) => {
+            if (err) return console.error(err);
+            var attachurl;
+            if (message.attachments.size > 0) attachurl = message.attachments.array()[0].url;
+            else attachurl = '';
+
+            writeFileSync('.cache/'+ message.channel.name + '.txt', data + `\n${message.author.tag} : ${message.content} ${attachurl}`);
+        });
+    }
 });

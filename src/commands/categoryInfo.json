@@ -6,6 +6,12 @@
         "emoji": "🖼️"
     },
     {
+        "name": "Contact administrateurs",
+        "dir": "modmail",
+        "description": "Gestion des tickets pour contacter le staff",
+        "emoji": "🎫"
+    },
+    {
         "name": "Utilities",
         "dir": "utils",
         "description": "Commandes utilitaires",
