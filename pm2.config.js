@@ -1,6 +1,6 @@
 module.exports = {
     apps : [{
-        name: ' DisneyFR-Bot',
+        name: 'DisneyFR-Bot',
         script: 'src/bot.js',
 
         // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
