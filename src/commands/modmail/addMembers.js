@@ -67,11 +67,10 @@ exports.execute = async (interaction, commands) => {
             users.push(user);
         }
         if (role) {
-            await interaction.channel.permissionOverwrites.edit(role, {
-                VIEW_CHANNEL: true,
-            });
-
-            role.members.forEach(user => {
+            role.members.forEach(async user => {
+                await interaction.channel.permissionOverwrites.edit(user, {
+                    VIEW_CHANNEL: true,
+                });
                 users.push(user);
             });
         }
