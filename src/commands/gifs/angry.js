@@ -44,8 +44,8 @@ exports.execute = async (interaction, commands) => {
     embed.setImage(gifUrl);
     embed.setColor('DARK_RED');
 
-    if (personne) embed.setDescription(`<@${interaction.member.id}> n'est pas content de <@${personne.id}>`);
-    else embed.setDescription(`<@${interaction.member.id}> n'est pas content`);
+    if (personne) embed.setDescription(`<@${interaction.member.id}> n'est pas content de <@${personne.id}> 😠`);
+    else embed.setDescription(`<@${interaction.member.id}> n'est pas content 😠`);
 
     interaction.reply({
         embeds: [embed]

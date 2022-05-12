@@ -6,14 +6,14 @@ const Command = require('../../structures/Command'),
  * Set the command here, it's what we'll type in the message
  * @type {string}
  */
-exports.name = 'cry';
+exports.name = 'kiss';
 
 
 /**
  * Set the description here, this is what will show up when you need help for the command
  * @type {string}
  */
-exports.description = 'Pleurs :\'(';
+exports.description = 'Faire un bisou 😘';
 
 
 /**
@@ -23,7 +23,7 @@ exports.description = 'Pleurs :\'(';
 exports.args = [
     {
         name: 'personne',
-        description: 'A qui rejeter la faute?',
+        description: 'Faire un bisou a qui?',
         type: 'user',
         required: false
     }
@@ -42,10 +42,10 @@ exports.execute = async (interaction, commands) => {
         embed = new MessageEmbed();
 
     embed.setImage(gifUrl);
-    embed.setColor('DARK_BLUE');
+    embed.setColor('GREEN');
 
-    if (personne) embed.setDescription(`<@${interaction.member.id}> pleure a cause de <@${personne.id}> 😢`);
-    else embed.setDescription(`<@${interaction.member.id}> pleure 😢`);
+    if (personne) embed.setDescription(`<@${interaction.member.id}> fait un bisou à <@${personne.id}>! 😘`);
+    else embed.setDescription(`<@${interaction.member.id}> vous fait tous un gros bisou! 😘`);
 
     interaction.reply({
         embeds: [embed]
