@@ -76,7 +76,7 @@ exports.execute = async (interaction, commands) => {
 
     let channelsCategory = interaction.guild.channels.cache.find(c => c.id == '757559028661354536' && c.type == "GUILD_CATEGORY");
     if (!channelsCategory)
-        interaction.reply({
+        return interaction.reply({
             ephemeral:true,
             content: "Erreur: la catégorie des salons modmail n'existe pas"
         });
