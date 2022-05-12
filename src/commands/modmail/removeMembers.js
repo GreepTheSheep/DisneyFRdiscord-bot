@@ -25,12 +25,6 @@ exports.args = [
         description: 'Retirer un utilisateur',
         type: 'user',
         required: false
-    },
-    {
-        name: 'role',
-        description: 'Retirer un groupe d\'utilisateurs par leur rôle',
-        type: 'role',
-        required: false
     }
 ];
 
@@ -41,45 +35,29 @@ exports.args = [
  * @param {Command[]} commands
  */
 exports.execute = async (interaction, commands) => {
-    if (interaction.member.roles.cache.has(r=>r.id == "600643775978799115") || interaction.member.id == process.env.OWNER_ID) {
-        if (interaction.channel.parentId != "757559028661354536") return interaction.reply({
+    await interaction.deferReply({ephemeral:true});
+    let role = await interaction.guild.roles.fetch(process.env.SERVER_ADMIN_ROLE_ID);
+    if (role.members.some(member => member.id === interaction.member.id) || interaction.member.id == process.env.OWNER_ID) {
+        if (interaction.channel.parentId != process.env.MODMAIL_CATEGORY_ID) return interaction.reply({
             ephemeral:true,
             content: "Vous n'êtes pas dans la catégorie des modmails"
         });
 
-        let user = interaction.options.getUser('user'),
-            role = interaction.options.getRole('role');
+        let user = interaction.options.getUser('user');
 
-        if (!user && !role) return interaction.reply({
+        if (!user) return interaction.reply({
             ephemeral:true,
             content: "Veuillez entrer un utilisateur et/ou un rôle"
         });
-
-        await interaction.deferReply({ephemeral:true});
-
-        let users = [];
-
-        if (user) {
-            await interaction.channel.permissionOverwrites.edit(user, {
-                VIEW_CHANNEL: false,
-            });
-
-            users.push(user);
-        }
-        if (role) {
-            role.members.forEach(async user => {
-                await interaction.channel.permissionOverwrites.edit(user, {
-                    VIEW_CHANNEL: false,
-                });
-                users.push(user);
-            });
-        }
-
-        interaction.editReply({
-            content: `${users.length} membres retirées: ${users.map(user => `<@${user.id}>`).join(', ')}`,
+        await interaction.channel.permissionOverwrites.edit(user, {
+            VIEW_CHANNEL: false,
         });
 
-    } else interaction.reply({
+        interaction.editReply({
+            content: `<@${user.id}> à été retirée du salon`,
+        });
+
+    } else interaction.editReply({
         ephemeral:true,
         content: "Vous n'avez pas les permissions de faire ça"
     });

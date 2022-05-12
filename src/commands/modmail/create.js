@@ -74,7 +74,7 @@ exports.execute = async (interaction, commands) => {
             content: "Il faut ajouter un message supplémentaire pour donner la raison"
         });
 
-    let channelsCategory = interaction.guild.channels.cache.find(c => c.id == '757559028661354536' && c.type == "GUILD_CATEGORY");
+    let channelsCategory = interaction.guild.channels.cache.find(c => c.id == process.env.MODMAIL_CATEGORY_ID && c.type == "GUILD_CATEGORY");
     if (!channelsCategory)
         return interaction.reply({
             ephemeral:true,
@@ -91,7 +91,7 @@ exports.execute = async (interaction, commands) => {
                 deny: [PermissionFlagsBits.ViewChannel]
             },
             {
-                id: "600643775978799115",
+                id: process.env.SERVER_ADMIN_ROLE_ID,
                 allow: [PermissionFlagsBits.ViewChannel]
             },
             {

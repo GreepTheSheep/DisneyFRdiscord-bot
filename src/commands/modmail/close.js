@@ -30,13 +30,15 @@ exports.args = [];
  * @param {Command[]} commands
  */
 exports.execute = async (interaction, commands) => {
-    if (interaction.member.roles.cache.has(r=>r.id == "600643775978799115") || interaction.member.id == process.env.OWNER_ID) {
-        if (interaction.channel.parentId != "757559028661354536") return interaction.reply({
+    await interaction.deferReply();
+    let role = await interaction.guild.roles.fetch(process.env.SERVER_ADMIN_ROLE_ID);
+    if (role.members.some(member => member.id === interaction.member.id) || interaction.member.id == process.env.OWNER_ID) {
+        if (interaction.channel.parentId != process.env.MODMAIL_CATEGORY_ID) return interaction.reply({
             ephemeral:true,
             content: "Vous n'êtes pas dans la catégorie des modmails"
         });
 
-        await interaction.reply({
+        await interaction.editReply({
             content: "<:Snap:834854661667815514>"
         });
 
@@ -53,7 +55,7 @@ exports.execute = async (interaction, commands) => {
 
         interaction.channel.delete("Fin du ticket");
 
-    } else interaction.reply({
+    } else interaction.editReply({
         ephemeral:true,
         content: "Vous n'avez pas les permissions de faire ça"
     });
