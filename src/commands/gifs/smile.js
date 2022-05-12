@@ -42,7 +42,7 @@ exports.execute = async (interaction, commands) => {
         embed = new MessageEmbed();
 
     embed.setImage(gifUrl);
-    embed.setColor('GREEN');
+    embed.setColor('BLUE');
 
     if (personne) embed.setDescription(`<@${interaction.member.id}> fait un sourire à <@${personne.id}> 😀`);
     else embed.setDescription(`<@${interaction.member.id}> sourit 😀`);

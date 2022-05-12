@@ -42,7 +42,7 @@ exports.execute = async (interaction, commands) => {
         embed = new MessageEmbed();
 
     embed.setImage(gifUrl);
-    embed.setColor('GREEN');
+    embed.setColor('LUMINOUS_VIVID_PINK');
 
     if (personne) embed.setDescription(`<@${interaction.member.id}> fait un bisou à <@${personne.id}>! 😘`);
     else embed.setDescription(`<@${interaction.member.id}> vous fait tous un gros bisou! 😘`);

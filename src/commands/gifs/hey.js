@@ -42,7 +42,7 @@ exports.execute = async (interaction, commands) => {
         embed = new MessageEmbed();
 
     embed.setImage(gifUrl);
-    embed.setColor('GREEN');
+    embed.setColor('RANDOM');
 
     if (personne) embed.setDescription(`<@${interaction.member.id}> passe le bonjour à <@${personne.id}> 👋`);
     else embed.setDescription(`<@${interaction.member.id}> passe le bonjour 👋`);
