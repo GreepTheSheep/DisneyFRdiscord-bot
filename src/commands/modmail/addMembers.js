@@ -41,7 +41,7 @@ exports.args = [
  * @param {Command[]} commands
  */
 exports.execute = async (interaction, commands) => {
-    if (interaction.member.roles.includes(r=>r.id == "600643775978799115") || interaction.member.id == process.env.OWNER_ID) {
+    if (interaction.member.roles.cache.has(r=>r.id == "600643775978799115") || interaction.member.id == process.env.OWNER_ID) {
         if (interaction.channel.parentId != "757559028661354536") return interaction.reply({
             ephemeral:true,
             content: "Vous n'êtes pas dans la catégorie des modmails"
