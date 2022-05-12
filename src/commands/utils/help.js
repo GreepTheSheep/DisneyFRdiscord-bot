@@ -5,7 +5,7 @@ const Command = require('../../structures/Command'),
 /**
  * @type {string}
  */
-exports.name = 'help';
+exports.name = 'aide';
 
 /**
  * @type {string}
