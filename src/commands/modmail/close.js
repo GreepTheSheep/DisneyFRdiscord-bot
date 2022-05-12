@@ -44,7 +44,7 @@ exports.execute = async (interaction, commands) => {
 
         await interaction.user.send({
             content: "Chat du modmail de "+interaction.channel.name,
-            attachments: [attachment]
+            files: [attachment]
         });
 
         unlinkSync('.cache/' + interaction.channel.name + '.txt');
