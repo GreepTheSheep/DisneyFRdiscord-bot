@@ -30,7 +30,7 @@ exports.args = [
         choices: [
             {
                 name: 'Signaler quelqu\'un',
-                value: 'report'
+                value: 'signalement'
             },
             {
                 name: 'Poser une question',
@@ -42,11 +42,11 @@ exports.args = [
             },
             {
                 name: 'Demande de partenariat',
-                value: 'partener'
+                value: 'partenaire'
             },
             {
                 name: 'Autre demande',
-                value: 'other'
+                value: 'autre'
             }
         ]
     },
@@ -68,7 +68,7 @@ exports.execute = async (interaction, commands) => {
     let reason = interaction.options.getString('raison'),
         message = interaction.options.getString('message');
 
-    if (reason == 'other' && !message)
+    if (reason == 'autre' && !message)
         return interaction.reply({
             ephemeral: true,
             content: "Il faut ajouter un message supplémentaire pour donner la raison"
