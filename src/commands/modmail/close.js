@@ -45,14 +45,21 @@ exports.execute = async (interaction, commands) => {
         const attachment = new MessageAttachment('.cache/' + interaction.channel.name + '.txt'),
             archiveChannel = await interaction.guild.channels.fetch("974598810158374943");
 
-        if (archiveChannel && archiveChannel.isText()) archiveChannel.send({
-            content: interaction.channel.name,
-            files: [attachment]
-        });
-        else interaction.user.send({
-            content: "Chat du modmail de "+interaction.channel.name + "\nJ'ai pas reussi à envoyer dans le salon archive!",
-            files: [attachment]
-        });
+        try {
+            if (archiveChannel && archiveChannel.isText()) await archiveChannel.send({
+                content: interaction.channel.name,
+                files: [attachment]
+            });
+            else await interaction.user.send({
+                content: "Chat du modmail de "+interaction.channel.name + "\nJ'ai pas reussi à envoyer dans le salon archive!",
+                files: [attachment]
+            });
+        } catch (err) {
+            await interaction.user.send({
+                content: "Chat du modmail de "+interaction.channel.name + "\nJ'ai pas reussi à envoyer dans le salon archive!\nErreur: " + err,
+                files: [attachment]
+            });
+        }
 
         unlinkSync('.cache/' + interaction.channel.name + '.txt');
 
