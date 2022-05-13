@@ -140,7 +140,7 @@ exports.executeSelectMenu = async (interaction, categoryId, argument, commands) 
 function ticketHeader(interaction) {
     let reason = interaction.options.getString('raison'),
         message = interaction.options.getString('message'),
-        content = `Ticket modmail ouvert par ${interaction.user.tag} le ${date()} à ${time()} pour la raison ${reason} ${message?` (${message})`:""}`;
+        content = `Ticket modmail ouvert par ${interaction.user.tag} le ${date()} à ${time()} pour la raison ${reason} ${message?`(${message})`:""}`;
 
     return content+"\n"+new Array().fill("-", 0, 20).join();
 }
