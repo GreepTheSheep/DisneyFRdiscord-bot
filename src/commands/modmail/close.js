@@ -42,10 +42,15 @@ exports.execute = async (interaction, commands) => {
             content: "<:Snap:834854661667815514>"
         });
 
-        const attachment = new MessageAttachment('.cache/' + interaction.channel.name + '.txt');
+        const attachment = new MessageAttachment('.cache/' + interaction.channel.name + '.txt'),
+            archiveChannel = await interaction.guild.channels.fetch("974598810158374943");
 
-        await interaction.user.send({
-            content: "Chat du modmail de "+interaction.channel.name,
+        if (archiveChannel && archiveChannel.isText()) archiveChannel.send({
+            content: interaction.channel.name,
+            files: [attachment]
+        });
+        else interaction.user.send({
+            content: "Chat du modmail de "+interaction.channel.name + "\nJ'ai pas reussi à envoyer dans le salon archive!",
             files: [attachment]
         });
 
