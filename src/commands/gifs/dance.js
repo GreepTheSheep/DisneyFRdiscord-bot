@@ -6,7 +6,7 @@ const Command = require('../../structures/Command'),
  * Set the command here, it's what we'll type in the message
  * @type {string}
  */
-exports.name = 'danse';
+exports.name = 'dance';
 
 
 /**
