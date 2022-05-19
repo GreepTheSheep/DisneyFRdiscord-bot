@@ -26,6 +26,6 @@ module.exports = function(){
             }
         }
     }
-    console.log(`⌨️  ${arr.length} commands loaded`);
+    console.log(`⌨️ ${arr.length} commands loaded`);
     return arr;
 };
