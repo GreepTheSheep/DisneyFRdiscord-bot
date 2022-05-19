@@ -24,7 +24,7 @@ exports.args = [
         name: 'user',
         description: 'Retirer un utilisateur',
         type: 'user',
-        required: false
+        required: true
     }
 ];
 
@@ -47,7 +47,7 @@ exports.execute = async (interaction, commands) => {
 
         if (!user) return interaction.reply({
             ephemeral:true,
-            content: "Veuillez entrer un utilisateur et/ou un rôle"
+            content: "Veuillez entrer un utilisateur"
         });
         await interaction.channel.permissionOverwrites.edit(user, {
             VIEW_CHANNEL: false,

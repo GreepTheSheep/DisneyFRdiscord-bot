@@ -24,7 +24,7 @@ exports.args = [
         name: 'user',
         description: 'Ajouter un utilisateur',
         type: 'user',
-        required: false
+        required: true
     }
 ];
 
@@ -46,7 +46,7 @@ exports.execute = async (interaction, commands) => {
         let user = interaction.options.getUser('user');
 
         if (!user) return interaction.editReply({
-            content: "Veuillez entrer un utilisateur et/ou un rôle"
+            content: "Veuillez entrer un utilisateur"
         });
 
         await interaction.channel.permissionOverwrites.edit(user, {
