@@ -43,6 +43,11 @@ exports.execute = async (interaction, commands) => {
             content: "Vous n'êtes pas dans la catégorie des modmails"
         });
 
+        if (interaction.channel.id == process.env.MODMAIL_ARCHIVES_CHANNEL_ID) return interaction.reply({
+            ephemeral:true,
+            content: "Vous ne pouvez pas depuis ce salon"
+        });
+
         let user = interaction.options.getUser('user');
 
         if (!user) return interaction.reply({

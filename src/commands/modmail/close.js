@@ -38,6 +38,11 @@ exports.execute = async (interaction, commands) => {
             content: "Vous n'êtes pas dans la catégorie des modmails"
         });
 
+        if (interaction.channel.id == process.env.MODMAIL_ARCHIVES_CHANNEL_ID) return interaction.reply({
+            ephemeral:true,
+            content: "Vous ne pouvez pas depuis ce salon"
+        });
+
         await interaction.editReply({
             content: "<:Snap:834854661667815514>"
         });

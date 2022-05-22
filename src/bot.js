@@ -83,6 +83,7 @@ client.on('guildCreate', guild=>{
 
 client.on('messageCreate', message=>{
     if (message.channel.parentId == process.env.MODMAIL_CATEGORY_ID) { // modmail
+        if (message.channel.id == process.env.MODMAIL_ARCHIVES_CHANNEL_ID) return;
         readFile('.cache/'+ message.channel.name + '.txt', (err, data) => {
             if (err) return console.error(err);
             var attachurl;
