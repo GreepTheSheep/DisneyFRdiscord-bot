@@ -44,8 +44,8 @@ exports.execute = async (interaction, commands) => {
     embed.setImage(gifUrl);
     embed.setColor('DARK_PURPLE');
 
-    if (personne) embed.setDescription(`<@${interaction.member.id}> a menti à <@${personne.id}> 🤥`);
-    else embed.setDescription(`<@${interaction.member.id}> vous a menti 🤥`);
+    if (personne) embed.setDescription(`<@${personne.id}> vous a menti 🤥`);
+    else embed.setDescription(`Quelqu'un ici a menti 🤥`);
 
     interaction.reply({
         embeds: [embed]
