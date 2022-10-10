@@ -63,4 +63,4 @@ jobs:
             git checkout .
             git pull
             docker build -t discord-disneyfr .
-            docker run --rm -d discord-disneyfr
+            docker run --rm --name DisneyFR-Bot -d discord-disneyfr
