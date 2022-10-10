@@ -63,5 +63,6 @@ jobs:
             git checkout .
             git pull
             docker stop DisneyFR-Bot | true
+            docker rm -v $(docker ps -a -q -f status=exited) | true
             docker build -t discord-disneyfr .
-            docker run --rm --restart unless-stopped --name DisneyFR-Bot -d discord-disneyfr
+            docker run --restart unless-stopped --name DisneyFR-Bot -d discord-disneyfr
