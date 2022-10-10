@@ -62,5 +62,6 @@ jobs:
             cd ${{ secrets.SERVER_PATH }}
             git checkout .
             git pull
+            docker stop DisneyFR-Bot
             docker build -t discord-disneyfr .
             docker run --rm --name DisneyFR-Bot -d discord-disneyfr
